@@ -1,4 +1,10 @@
-from django.http import HttpResponse
+from django.shortcuts import render
+
+from .models import Device
+
 
 def index(request):
-    return HttpResponse("--Watering control page--")
+    devices = Device.objects.all()
+    context = {'device_list' : devices}
+
+    return render(request, 'web/index.html', context)

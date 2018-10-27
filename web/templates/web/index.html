@@ -1,0 +1,9 @@
+{% if device_list %}
+    <ul>
+    {% for device in device_list %}
+        <li>{{device.name}} on GPIO pin {{device.rp_channel}}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No devices are available.</p>
+{% endif %}
