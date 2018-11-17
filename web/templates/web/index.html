@@ -1,9 +1,62 @@
+{% extends 'web/layout.html' %}
+{% block body %}
+<h3>Input devices</h3>
+        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="http://cdn3.devexpress.com/jslib/13.2.7/js/dx.chartjs.js?v=2" type="text/javascript"></script>
 {% if device_list %}
-    <ul>
     {% for device in device_list %}
-        <li>{{device.name}} on GPIO pin {{device.rp_channel}}</li>
+        {% if device.device_type == device.INPUT %}
+<div id="circularGaugeContainer{{forloop.counter}}" style="height:250px;margin:0 auto">
+</div>
+<script>
+$("#circularGaugeContainer{{forloop.counter}}").dxCircularGauge({
+  rangeContainer: { 
+    offset: 10,
+    ranges: [
+      { startValue: 0, endValue: 0.2, color: '#FF0000' },
+      { startValue: 0.2, endValue: 0.4, color: '#FFFF00' },
+      { startValue: 0.4, endValue: 0.7, color: '#88FF00' },
+      { startValue: 0.7, endValue: 0.9, color: '#FFFF00' },
+      { startValue: 0.9, endValue: 1, color: '#FF0000' }
+    ]
+  },
+  scale: {
+    startValue: 0,  endValue: 1,
+    majorTick: { tickInterval: 0.2 },
+    label: {
+      format: 'percent'
+    }
+  },
+  title: {
+    text: 'Status for {{device.name}} of type {{device.device_type}}',
+    subtitle: 'test',
+    position: 'top-center'
+  },
+  tooltip: {
+		enabled: true,
+    format: 'percent',
+		customizeText: function (arg) {
+			return 'Current ' + arg.valueText;
+		}
+	},
+  subvalueIndicator: {
+    type: 'textCloud',
+    format: 'percent',
+    text: {
+      format: 'percent',
+      customizeText: function (arg) {
+				return 'Set point ' + arg.valueText;
+      }
+    }
+  },
+  value: 0.6,
+  subvalues: [0.55]
+});
+</script>
+        {% endif %}
     {% endfor %}
-    </ul>
 {% else %}
     <p>No devices are available.</p>
 {% endif %}
+{% endblock %}

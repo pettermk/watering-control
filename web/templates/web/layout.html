@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Raspberry pi watering system</title>
+        {% else %}
+        <title>Raspberry pi watering system</title>
+        {% endif %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+        {% if bokeh_version %}
+        <link rel="stylesheet" href="http://cdn.pydata.org/bokeh/release/bokeh-{{bokeh_version}}.min.css" type="text/css" />
+        <script type="text/javascript" src="http://cdn.pydata.org/bokeh/release/bokeh-{{bokeh_version}}.min.js"></script>
+        {% endif %}
+        {% if script %}
+        {{ script | safe }}
+        {% endif %}
+    </head>
+    <body>
+        {% include 'web/includes/_navbar.html' %}
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
