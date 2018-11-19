@@ -4,9 +4,8 @@
         <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
         <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://cdn3.devexpress.com/jslib/13.2.7/js/dx.chartjs.js?v=2" type="text/javascript"></script>
-{% if device_list %}
-    {% for device in device_list %}
-        {% if device.device_type == device.INPUT %}
+{% if input_device_list %}
+    {% for device in input_device_list %}
 <div id="circularGaugeContainer{{forloop.counter}}" style="height:250px;margin:0 auto">
 </div>
 <script>
@@ -54,7 +53,6 @@ $("#circularGaugeContainer{{forloop.counter}}").dxCircularGauge({
   subvalues: [0.55]
 });
 </script>
-        {% endif %}
     {% endfor %}
 {% else %}
     <p>No devices are available.</p>

@@ -1,10 +1,10 @@
 from django.shortcuts import render
 
-from .models import Device
+from .models import InputDevice
 
 
 def index(request):
-    devices = Device.objects.all()
-    context = {'device_list' : devices}
+    devices = InputDevice.objects.all()
+    context = {'input_device_list' : devices}
 
     return render(request, 'web/index.html', context)
