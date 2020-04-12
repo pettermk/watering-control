@@ -1,11 +1,23 @@
 from django.db import models
 
 
+class Host(models.Model):
+    name = models.CharField(max_length=30)
+    ip_address = models.GenericIPAddressField()
+    description = models.TextField()
+
+    def __str__(self):
+        return f'{self.name} with address {self.ip_address}'
+
+
 class Device(models.Model):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=500)
     location = models.CharField(max_length=50)
     rp_channel = models.IntegerField()
+    host = models.ForeignKey(to='Host',
+                             null=True,
+                             on_delete=models.SET_NULL)
 
     class Meta:
         abstract = True
@@ -36,6 +48,9 @@ class Controller(models.Model):
     output_device = models.ForeignKey(to=OutputDevice, null=True, on_delete=models.SET_NULL)
     is_active = models.BooleanField()
     set_point = models.FloatField()
+    host = models.ForeignKey(to='Host',
+                             null=True,
+                             on_delete=models.SET_NULL)
 
     class Meta:
         abstract = True
