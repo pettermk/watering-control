@@ -1,0 +1,13 @@
+syntax="proto3";
+
+service WaterController {
+    rpc SetConfig (Configuration) returns (Status) {}
+}
+
+message Configuration {
+    map<string, string> config = 1;
+}
+
+message Status {
+    bool ok = 2;
+}
