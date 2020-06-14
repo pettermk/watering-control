@@ -1,10 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Host(models.Model):
     name = models.CharField(max_length=30)
     ip_address = models.GenericIPAddressField()
     description = models.TextField()
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.name} with address {self.ip_address}'
