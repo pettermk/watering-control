@@ -1,5 +1,6 @@
-from django.shortcuts import render
+import logging
 
+from django.shortcuts import render
 from rest_framework.views import APIView
 from django.http import Http404, HttpResponseRedirect
 from django.contrib.auth.models import User
@@ -17,6 +18,7 @@ from .serializers import (InputDeviceSerializer,
     UserSerializerWithToken,
 )
 
+logger = logging.getLogger(__file__)
 
 def index(request):
     devices = InputDevice.objects.all()
@@ -30,7 +32,8 @@ class InputDeviceList(APIView):
     List all input devices, or create a new snippet.
     """
     def get(self, request, format=None):
-        input_devices = InputDevice.objects.all()
+        logging.warning(f'User is {request.user}')
+        input_devices = InputDevice.objects.filter(host__user=request.user)
         serializer = InputDeviceSerializer(input_devices, many=True)
         return Response(serializer.data)
 
@@ -46,7 +49,7 @@ class OutputDeviceList(APIView):
     List all snippets, or create a new snippet.
     """
     def get(self, request, format=None):
-        snippets = OutputDevice.objects.all()
+        snippets = OutputDevice.objects.filter(host__user=request.user)
         serializer = OutputDeviceSerializer(snippets, many=True)
         return Response(serializer.data)
 
@@ -62,7 +65,7 @@ class ControllerList(APIView):
     List all snippets, or create a new snippet.
     """
     def get(self, request, format=None):
-        controllers = OnOffController.objects.all()
+        controllers = OnOffController.objects.(host__user=request.user)
         serializer = ControllerSerializer(controllers, many=True)
         return Response(serializer.data)
 
