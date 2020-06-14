@@ -14,4 +14,6 @@ if __name__=='__main__':
             })
             stub.SetConfig(conf)
             time.sleep(3)
+            a = stub.GetValues(service_pb2.Configuration())
+            print(a)
 

@@ -18,12 +18,23 @@ class WaterControllerStub(object):
                 request_serializer=service__pb2.Configuration.SerializeToString,
                 response_deserializer=service__pb2.Status.FromString,
                 )
+        self.GetValues = channel.unary_unary(
+                '/WaterController/GetValues',
+                request_serializer=service__pb2.Configuration.SerializeToString,
+                response_deserializer=service__pb2.Values.FromString,
+                )
 
 
 class WaterControllerServicer(object):
     """Missing associated documentation comment in .proto file"""
 
     def SetConfig(self, request, context):
+        """Missing associated documentation comment in .proto file"""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetValues(self, request, context):
         """Missing associated documentation comment in .proto file"""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -36,6 +47,11 @@ def add_WaterControllerServicer_to_server(servicer, server):
                     servicer.SetConfig,
                     request_deserializer=service__pb2.Configuration.FromString,
                     response_serializer=service__pb2.Status.SerializeToString,
+            ),
+            'GetValues': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetValues,
+                    request_deserializer=service__pb2.Configuration.FromString,
+                    response_serializer=service__pb2.Values.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -60,5 +76,21 @@ class WaterController(object):
         return grpc.experimental.unary_unary(request, target, '/WaterController/SetConfig',
             service__pb2.Configuration.SerializeToString,
             service__pb2.Status.FromString,
+            options, channel_credentials,
+            call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def GetValues(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/WaterController/GetValues',
+            service__pb2.Configuration.SerializeToString,
+            service__pb2.Values.FromString,
             options, channel_credentials,
             call_credentials, compression, wait_for_ready, timeout, metadata)

@@ -1,7 +1,10 @@
 syntax="proto3";
 
+import "google/protobuf/empty.proto";
+
 service WaterController {
     rpc SetConfig (Configuration) returns (Status) {}
+    rpc GetValues (Configuration) returns (Values) {}
 }
 
 message Configuration {
@@ -10,4 +13,13 @@ message Configuration {
 
 message Status {
     bool ok = 2;
+}
+
+message Value {
+    string device = 3;
+    float value = 4;
+}
+
+message Values {
+    repeated Value values = 5;
 }

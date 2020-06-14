@@ -11,6 +11,7 @@ from google.protobuf import symbol_database as _symbol_database
 _sym_db = _symbol_database.Default()
 
 
+from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -18,8 +19,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   package='',
   syntax='proto3',
   serialized_options=None,
-  serialized_pb=b'\n\rservice.proto\"j\n\rConfiguration\x12*\n\x06\x63onfig\x18\x01 \x03(\x0b\x32\x1a.Configuration.ConfigEntry\x1a-\n\x0b\x43onfigEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x14\n\x06Status\x12\n\n\x02ok\x18\x02 \x01(\x08\x32\x39\n\x0fWaterController\x12&\n\tSetConfig\x12\x0e.Configuration\x1a\x07.Status\"\x00\x62\x06proto3'
-)
+  serialized_pb=b'\n\rservice.proto\x1a\x1bgoogle/protobuf/empty.proto\"j\n\rConfiguration\x12*\n\x06\x63onfig\x18\x01 \x03(\x0b\x32\x1a.Configuration.ConfigEntry\x1a-\n\x0b\x43onfigEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\"\x14\n\x06Status\x12\n\n\x02ok\x18\x02 \x01(\x08\"&\n\x05Value\x12\x0e\n\x06\x64\x65vice\x18\x03 \x01(\t\x12\r\n\x05value\x18\x04 \x01(\x02\" \n\x06Values\x12\x16\n\x06values\x18\x05 \x03(\x0b\x32\x06.Value2a\n\x0fWaterController\x12&\n\tSetConfig\x12\x0e.Configuration\x1a\x07.Status\"\x00\x12&\n\tGetValues\x12\x0e.Configuration\x1a\x07.Values\"\x00\x62\x06proto3'
+  ,
+  dependencies=[google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
 
 
@@ -57,8 +59,8 @@ _CONFIGURATION_CONFIGENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=78,
-  serialized_end=123,
+  serialized_start=107,
+  serialized_end=152,
 )
 
 _CONFIGURATION = _descriptor.Descriptor(
@@ -87,8 +89,8 @@ _CONFIGURATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17,
-  serialized_end=123,
+  serialized_start=46,
+  serialized_end=152,
 )
 
 
@@ -118,14 +120,86 @@ _STATUS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=125,
-  serialized_end=145,
+  serialized_start=154,
+  serialized_end=174,
+)
+
+
+_VALUE = _descriptor.Descriptor(
+  name='Value',
+  full_name='Value',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='device', full_name='Value.device', index=0,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+    _descriptor.FieldDescriptor(
+      name='value', full_name='Value.value', index=1,
+      number=4, type=2, cpp_type=6, label=1,
+      has_default_value=False, default_value=float(0),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=176,
+  serialized_end=214,
+)
+
+
+_VALUES = _descriptor.Descriptor(
+  name='Values',
+  full_name='Values',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='values', full_name='Values.values', index=0,
+      number=5, type=11, cpp_type=10, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=216,
+  serialized_end=248,
 )
 
 _CONFIGURATION_CONFIGENTRY.containing_type = _CONFIGURATION
 _CONFIGURATION.fields_by_name['config'].message_type = _CONFIGURATION_CONFIGENTRY
+_VALUES.fields_by_name['values'].message_type = _VALUE
 DESCRIPTOR.message_types_by_name['Configuration'] = _CONFIGURATION
 DESCRIPTOR.message_types_by_name['Status'] = _STATUS
+DESCRIPTOR.message_types_by_name['Value'] = _VALUE
+DESCRIPTOR.message_types_by_name['Values'] = _VALUES
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Configuration = _reflection.GeneratedProtocolMessageType('Configuration', (_message.Message,), {
@@ -150,6 +224,20 @@ Status = _reflection.GeneratedProtocolMessageType('Status', (_message.Message,),
   })
 _sym_db.RegisterMessage(Status)
 
+Value = _reflection.GeneratedProtocolMessageType('Value', (_message.Message,), {
+  'DESCRIPTOR' : _VALUE,
+  '__module__' : 'service_pb2'
+  # @@protoc_insertion_point(class_scope:Value)
+  })
+_sym_db.RegisterMessage(Value)
+
+Values = _reflection.GeneratedProtocolMessageType('Values', (_message.Message,), {
+  'DESCRIPTOR' : _VALUES,
+  '__module__' : 'service_pb2'
+  # @@protoc_insertion_point(class_scope:Values)
+  })
+_sym_db.RegisterMessage(Values)
+
 
 _CONFIGURATION_CONFIGENTRY._options = None
 
@@ -159,8 +247,8 @@ _WATERCONTROLLER = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   serialized_options=None,
-  serialized_start=147,
-  serialized_end=204,
+  serialized_start=250,
+  serialized_end=347,
   methods=[
   _descriptor.MethodDescriptor(
     name='SetConfig',
@@ -169,6 +257,15 @@ _WATERCONTROLLER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_CONFIGURATION,
     output_type=_STATUS,
+    serialized_options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='GetValues',
+    full_name='WaterController.GetValues',
+    index=1,
+    containing_service=None,
+    input_type=_CONFIGURATION,
+    output_type=_VALUES,
     serialized_options=None,
   ),
 ])
