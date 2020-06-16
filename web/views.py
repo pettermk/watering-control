@@ -65,7 +65,7 @@ class ControllerList(APIView):
     List all snippets, or create a new snippet.
     """
     def get(self, request, format=None):
-        controllers = OnOffController.objects.(host__user=request.user)
+        controllers = OnOffController.objects.filter(host__user=request.user)
         serializer = ControllerSerializer(controllers, many=True)
         return Response(serializer.data)
 
