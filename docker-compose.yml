@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD_DOCKER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       volumes:
         - ../../../../persist/postgres-data:/var/lib/postgresql/data
