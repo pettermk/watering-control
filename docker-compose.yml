@@ -5,11 +5,16 @@ services:
     image: postgres
     environment:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD_DOCKER}
+    volumes:
+      volumes:
+        - ../../../../persist/postgres-data:/var/lib/postgresql/data
   web:
     build: .
     command: python3 manage.py runserver 0.0.0.0:8000
     environment:
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD_DOCKER}
+      - DJANGO_SECRET=${DJANGO_SECRET}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - ENVIRONMENT=${ENVIRONMENT}
     volumes:
       - .:/code
     ports:
