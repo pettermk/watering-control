@@ -22,4 +22,4 @@ jobs:
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
         ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
-      run: docker-compose up web -d
+      run: docker-compose up -d web
