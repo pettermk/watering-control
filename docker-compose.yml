@@ -8,14 +8,12 @@ services:
     volumes:
       - ../../../../persist/postgres-data:/var/lib/postgresql/data
   web:
-    build: .
+    image: wateringcontrol:latest
     command: python3 manage.py runserver 0.0.0.0:8000
     environment:
       - DJANGO_SECRET=${DJANGO_SECRET}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - ENVIRONMENT=${ENVIRONMENT}
-    volumes:
-      - .:/code
     ports:
       - "8000:8000"
     depends_on:
