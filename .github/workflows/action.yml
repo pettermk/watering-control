@@ -18,4 +18,8 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag wateringcontrol:latest
     - name: Restart docker compose
+      env:
+        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+        DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
+        ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
       run: docker-compose restart web
