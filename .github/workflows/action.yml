@@ -17,3 +17,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag wateringcontrol:latest
+    - name: Restart docker compose
+      run: docker-compose restart web
