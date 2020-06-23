@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 RUN apt-get update && apt-get install -y nginx
 ADD . /code/
 RUN chmod +x entry_point.sh
-CMD [ "./entry_point.sh" ]
+ENTRYPOINT [ "./entry_point.sh" ]
