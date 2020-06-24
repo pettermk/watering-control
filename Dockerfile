@@ -5,7 +5,7 @@ WORKDIR /code
 ADD requirements.txt /code/
 ADD deploy/wateringcontrol_nginx.conf /etc/nginx/sites-available/
 RUN pip install -r requirements.txt
-RUN apt-get update && apt-get install -y nginx vim
+RUN apt-get update && apt-get install -y nginx vim certbot python-certbot-nginx
 RUN ln -s /etc/nginx/sites-available/wateringcontrol_nginx.conf /etc/nginx/sites-enabled/
 ADD . /code/
 RUN chmod +x entry_point.sh
