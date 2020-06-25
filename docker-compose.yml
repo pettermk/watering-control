@@ -13,6 +13,9 @@ services:
       - DJANGO_SECRET=${DJANGO_SECRET}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - ENVIRONMENT=${ENVIRONMENT}
+    volumes:
+      - /etc/nginx:/host/etc/nginx
+      - /etc/ssl:/host/etc/ssl
     expose:
       - "8000"
       - "80"
