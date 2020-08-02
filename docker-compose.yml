@@ -14,6 +14,7 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - ENVIRONMENT=${ENVIRONMENT}
     volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
       - /etc/nginx:/host/etc/nginx
       - /etc/ssl:/host/etc/ssl
     expose:
