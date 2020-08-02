@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET') or 'dummy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False if os.getenv('ENVIRONMENT') == 'PROD' else True
 
-ALLOWED_HOSTS = ['192.168.1.5', '92.221.106.142', 'kvalvaag.tplinkdns.com'] if os.getenv('ENVIRONMENT') == 'PROD' else []
+ALLOWED_HOSTS = ['192.168.1.5', '92.221.106.142', 'homeautomation-api.kvalvaag-tech.com'] if os.getenv('ENVIRONMENT') == 'PROD' else []
 
 
 # Application definition
