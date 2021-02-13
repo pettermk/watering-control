@@ -3,12 +3,16 @@ syntax="proto3";
 import "google/protobuf/empty.proto";
 
 service WaterController {
-    rpc SetConfig (Configuration) returns (Status) {}
+    rpc SetConfig (Configurations) returns (Status) {}
     rpc GetValues (Configuration) returns (Values) {}
 }
 
 message Configuration {
     map<string, string> config = 1;
+}
+
+message Configurations {
+    repeated Configuration configurations = 1;
 }
 
 message Status {
