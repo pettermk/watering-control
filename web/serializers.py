@@ -2,7 +2,7 @@ from rest_framework import serializers
 from rest_framework_simplejwt.settings import api_settings
 from django.contrib.auth.models import User
 
-from .models import InputDevice, OutputDevice, OnOffController
+from .models import InputDevice, OutputDevice, OnOffController, Host
 
 class InputDeviceSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,9 +15,18 @@ class OutputDeviceSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ControllerSerializer(serializers.ModelSerializer):
+    input_device = InputDeviceSerializer()
+    output_device = OutputDeviceSerializer()
     class Meta:
         model = OnOffController
         fields = '__all__'
+
+class HostSerializer(serializers.ModelSerializer):
+    controllers = ControllerSerializer(many=True, read_only=True)
+    class Meta:
+        model = Host
+        fields = '__all__'
+
 
 ### User serialization
 class UserSerializer(serializers.ModelSerializer):

@@ -10,10 +10,11 @@ from rest_framework import permissions, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from .models import InputDevice, OutputDevice, OnOffController
+from web.models import InputDevice, OutputDevice, OnOffController, Host
 from .serializers import (InputDeviceSerializer,
     OutputDeviceSerializer,
     ControllerSerializer,
+    HostSerializer,
     UserSerializer,
     UserSerializerWithToken,
 )
@@ -69,6 +70,14 @@ class ControllerList(APIView):
         serializer = ControllerSerializer(controllers, many=True)
         return Response(serializer.data)
 
+class HostList(APIView):
+    """
+    List all snippets, or create a new snippet.
+    """
+    def get(self, request, format=None):
+        hosts = Host.objects.filter(user=request.user)
+        serializer = HostSerializer(hosts, many=True)
+        return Response(serializer.data)
 
 ### User authentication
 
