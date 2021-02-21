@@ -1,28 +1,22 @@
 syntax="proto3";
 
-import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
 
 service WaterController {
     rpc AddControllers (Configurations) returns (Status) {}
     rpc GetValues (Configuration) returns (Values) {}
 }
 
-message Property {
-    oneof<int, float, string> propery = 1;
-}
-
-
-
 message Input {
-    map<string, Property> input = 1;
+    google.protobuf.Struct properties = 1;
 }
 
 message Output {
-    map<string, Property> output = 1;
+    google.protobuf.Struct properties = 1;
 }
 
 message Controller {
-    map<string, Property> controller = 1;
+    google.protobuf.Struct properties = 1;
 }
 
 message Configuration {
