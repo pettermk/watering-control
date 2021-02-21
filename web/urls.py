@@ -7,6 +7,7 @@ urlpatterns = [
     path('inputs/', views.InputDeviceList.as_view()),
     path('outputs/', views.OutputDeviceList.as_view()),
     path('controllers/', views.ControllerList.as_view()),
+    path('hosts/', views.HostList.as_view()),
     path('current_user/', views.current_user),
     path('users/', views.UserList.as_view()),
 ]

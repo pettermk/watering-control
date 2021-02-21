@@ -51,6 +51,7 @@ class Controller(models.Model):
     is_active = models.BooleanField()
     set_point = models.FloatField()
     host = models.ForeignKey(to='Host',
+                             related_name='controllers',
                              null=True,
                              on_delete=models.SET_NULL)
 
