@@ -13,17 +13,9 @@ services:
       - DJANGO_SECRET=${DJANGO_SECRET}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - ENVIRONMENT=${ENVIRONMENT}
-    volumes:
-      - /etc/letsencrypt:/etc/letsencrypt
-      - /etc/nginx:/host/etc/nginx
-      - /etc/ssl:/host/etc/ssl
     expose:
       - "8000"
-      - "80"
-      - "443"
     ports:
       - "8000:8000"
-      - "80:80"
-      - "443:443"
     depends_on:
       - db
