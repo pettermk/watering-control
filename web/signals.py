@@ -37,8 +37,7 @@ def update_controller(sender, instance: OnOffController, **kwargs):
     host: Host = instance.host
     ip_address: str = host.ip_address
     configurations: Configurations = get_configurations(host)
-    print(configurations)
-    with grpc.insecure_channel(f'{ip_address}:50051') as channel:
-        stub = service_pb2_grpc.WaterControllerStub(channel)
-        stub.AddControllers(configurations)
+    # with grpc.insecure_channel(f'{ip_address}:50051') as channel:
+    #     stub = service_pb2_grpc.WaterControllerStub(channel)
+    #     stub.AddControllers(configurations)
 
