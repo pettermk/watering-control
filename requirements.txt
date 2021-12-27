@@ -1,4 +1,5 @@
 django==3.2.*
+django-oauth-toolkit==1.6.1
 django-cors-headers>=3.0.2
 djangorestframework>=3.9
 djangorestframework-simplejwt>=4.3.0
