@@ -24,3 +24,4 @@ jobs:
         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
         ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+        OIDC_RSA_PRIVATE_KEY: ${{ secrets.OIDC_RSA_PRIVATE_KEY }}
