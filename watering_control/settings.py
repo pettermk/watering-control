@@ -134,6 +134,9 @@ OAUTH2_PROVIDER = {
     "OIDC_RSA_PRIVATE_KEY": os.environ.get("OIDC_RSA_PRIVATE_KEY"),
     "SCOPES": {
         "openid": "OpenID Connect scope",
+        "offline_access": "Offline access",
+        "profile": "Profile",
+        "email": "Email",
         # ... any other scopes that you use
     },
     # ... any other settings you want
