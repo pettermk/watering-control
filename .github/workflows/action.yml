@@ -3,25 +3,28 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches:
+      - "main"
+      - "feat/*"
   workflow_dispatch:
 
 jobs:
-
   build:
-
-    runs-on: self-hosted
-
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Build the Docker image
+    - name: Build
       run: docker build . --file Dockerfile --tag wateringcontrol:latest
-    - name: Restart docker compose
-      run: docker-compose up -d web
-      env:
-        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-        DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
-        ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
-        OIDC_RSA_PRIVATE_KEY: ${{ secrets.OIDC_RSA_PRIVATE_KEY }}
+
+  #   runs-on: self-hosted
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #   - name: Build the Docker image
+  #     run: docker build . --file Dockerfile --tag wateringcontrol:latest
+  #   - name: Restart docker compose
+  #     run: docker-compose up -d web
+  #     env:
+  #       POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+  #       DJANGO_SECRET: ${{ secrets.DJANGO_SECRET }}
+  #       ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
+  #       OIDC_RSA_PRIVATE_KEY: ${{ secrets.OIDC_RSA_PRIVATE_KEY }}
