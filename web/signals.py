@@ -37,7 +37,10 @@ def update_controller(sender, instance: OnOffController, **kwargs):
     host: Host = instance.host
     ip_address: str = host.ip_address
     configurations: Configurations = get_configurations(host)
-    # with grpc.insecure_channel(f'{ip_address}:50051') as channel:
-    #     stub = service_pb2_grpc.WaterControllerStub(channel)
-    #     stub.AddControllers(configurations)
-
+    try:
+        with grpc.insecure_channel(f'{ip_address}:50051') as channel:
+            stub = service_pb2_grpc.WaterControllerStub(channel)
+            stub.AddControllers(configurations)
+    except grpc.RpcError:
+        # Could not connect to unit - handle this in frontend
+        pass
