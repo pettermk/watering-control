@@ -6,7 +6,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=test
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data:z
+      - pg:/var/lib/postgresql/data:z
   web:
     build: .
     environment:
@@ -27,3 +27,5 @@ services:
       - "443:443"
     depends_on:
       - db
+volumes:
+  pg:
