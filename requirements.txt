@@ -3,7 +3,8 @@ django-oauth-toolkit==1.6.1
 django-cors-headers>=3.0.2
 djangorestframework>=3.9
 djangorestframework-simplejwt>=4.3.0
-psycopg2>=2.7
+psycopg2-binary>=2.7
 grpcio
 grpcio-tools
-uwsgi>=2.0.19
+gunicorn==20.1.0
+whitenoise==6.3.0
