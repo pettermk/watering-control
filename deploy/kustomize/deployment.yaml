@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: watering-control-deployment
+  labels:
+    app: watering-control
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: watering-control
+  template:
+    metadata:
+      labels:
+        app: watering-control
+    spec:
+      containers:
+      - name: watering-control
+        image: ghcr.io/pettermk/watering-control:0.1.0
+        ports:
+        - containerPort: 8000
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: watering-control-service
+spec:
+  selector:
+    app: watering-control
+  ports:
+    - port: 8080
+      targetPort: 8000
+      protocol: TCP
+      name: http
+  type: ClusterIP
