@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: watering-control
-        image: ghcr.io/pettermk/watering-control:0.1.0
+        image: ghcr.io/pettermk/watering-control:0.1.1
         ports:
         - containerPort: 8000
         imagePullPolicy: Always
