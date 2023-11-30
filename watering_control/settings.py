@@ -140,6 +140,7 @@ OAUTH2_PROVIDER = {
         "email": "Email",
         # ... any other scopes that you use
     },
+    "PKCE_REQUIRED": False,
     # ... any other settings you want
 }
 
