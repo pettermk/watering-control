@@ -93,10 +93,10 @@ WSGI_APPLICATION = 'watering_control.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
+        'NAME': os.getenv('POSTGRES_NAME', 'postgres'),
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST': 'db',
+        'HOST': os.getenv('POSTGRES_HOST', 'db'),
         'PORT': 5432,
     }
 }
