@@ -5,4 +5,5 @@ if [ "${ENVIRONMENT}" == "local" ]; then
     cd /code
 fi
 
+python manage.py collectstatic
 gunicorn watering_control.wsgi --access-logfile - --capture-output --bind 0.0.0.0:8000
