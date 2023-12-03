@@ -5,4 +5,4 @@ if [ "${ENVIRONMENT}" == "local" ]; then
     cd /code
 fi
 
-gunicorn watering_control.wsgi --access-logfile - --bind 0.0.0.0:8000
+gunicorn watering_control.wsgi --access-logfile - --capture-output --bind 0.0.0.0:8000
