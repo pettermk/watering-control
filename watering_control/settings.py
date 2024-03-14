@@ -56,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csp.middleware.CSPMiddleware',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -70,6 +71,9 @@ CORS_ORIGIN_REGEX_WHITELIST = (
 )
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
+
+CSP_DEFAULT_SRC = ["'self'"]
+CSP_FRAME_ANCESTORS = ["'self'", "http://localhost:5191"]
 
 ROOT_URLCONF = 'watering_control.urls'
 
