@@ -72,7 +72,7 @@ CORS_ORIGIN_REGEX_WHITELIST = (
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
-CSP_DEFAULT_SRC = ["'self'"]
+CSP_DEFAULT_SRC = ["'self'", "https://maxcdn.bootstrapcdn.com", "http://code.jquery.com", ]
 CSP_FRAME_ANCESTORS = ["'self'", "http://localhost:5191"]
 
 ROOT_URLCONF = 'watering_control.urls'
