@@ -22,8 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('DJANGO_SECRET') or 'dummy'
 
+IS_PRODUCTION = os.getenv('ENVIRONMENT') == 'PROD'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False if os.getenv('ENVIRONMENT') == 'PROD' else True
+DEBUG = not IS_PRODUCTION
 
 ALLOWED_HOSTS = ['*']
 
@@ -142,9 +143,12 @@ OAUTH2_PROVIDER = {
         "email": "Email",
         # ... any other scopes that you use
     },
-    "PKCE_REQUIRED": False,
+    "PKCE_REQUIRED": True,
     # ... any other settings you want
 }
+
+if IS_PRODUCTION:
+    OAUTH2_PROVIDER['OIDC_ISS_ENDPOINT'] = 'https://homeautomation-api.kvalvaag-tech.com/o'
 
 JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'web.utils.my_jwt_response_handler'
