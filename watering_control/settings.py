@@ -69,6 +69,8 @@ CORS_ORIGIN_REGEX_WHITELIST = (
     'https://pettermk.github.io',
 )
 
+X_FRAME_OPTIONS = "SAMEORIGIN"
+
 ROOT_URLCONF = 'watering_control.urls'
 
 TEMPLATES = [
