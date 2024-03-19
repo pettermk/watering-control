@@ -2,7 +2,7 @@
 {% block body %}
 <h3>Input devices</h3>
         <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/globalize/0.1.1/globalize.min.js"></script>
-        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="http://cdn3.devexpress.com/jslib/13.2.7/js/dx.chartjs.js?v=2" type="text/javascript"></script>
 {% if input_device_list %}
     {% for device in input_device_list %}
@@ -57,4 +57,8 @@ $("#circularGaugeContainer{{forloop.counter}}").dxCircularGauge({
 {% else %}
     <p>No devices are available.</p>
 {% endif %}
+{% endblock %}
+{% block scripts %}
+  <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 {% endblock %}
