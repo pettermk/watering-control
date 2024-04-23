@@ -14,12 +14,33 @@ spec:
       labels:
         app: watering-control
     spec:
+      initContainers:
+      - name: init-myservice
+        image: ghcr.io/pettermk/watering-control:0.1.15
+        envFrom:
+        - secretRef:
+            name: postgres-settings
+        command: ['sh', '-c', "python manage.py migrate"]
       containers:
       - name: watering-control
-        image: ghcr.io/pettermk/watering-control:0.1.2
+        image: ghcr.io/pettermk/watering-control:0.1.15
         ports:
         - containerPort: 8000
-        imagePullPolicy: Always
+        env:
+        - name: ENVIRONMENT
+          value: PROD
+        - name: OIDC_RSA_PRIVATE_KEY
+          valueFrom:
+            secretKeyRef:
+              name: oidc-rsa-key
+              key: oidc.key
+        envFrom:
+        - secretRef:
+            name: postgres-settings
+        - secretRef:
+            name: django-secrets
+      imagePullSecrets:
+      - name: regcred
 ---
 apiVersion: v1
 kind: Service
@@ -29,7 +50,7 @@ spec:
   selector:
     app: watering-control
   ports:
-    - port: 8080
+    - port: 8000
       targetPort: 8000
       protocol: TCP
       name: http

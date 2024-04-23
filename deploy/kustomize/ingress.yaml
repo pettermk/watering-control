@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: turbloggen-ingress
+  name: watering-control-ingress
   annotations:
     kubernetes.io/ingress.class: public
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
@@ -9,16 +9,16 @@ metadata:
 spec:
   tls:
   - hosts:
-    - turbloggen.kvalvaag-tech.com
+    - homeautomation-api.kvalvaag-tech.com
     secretName: kvalvaag-tech-tls
   rules:
-    - host: turbloggen.kvalvaag-tech.com
+    - host: homeautomation-api.kvalvaag-tech.com
       http:
         paths:
         - path: /
           pathType: Prefix
           backend:
             service:
-              name: turbloggen-service
+              name: watering-control-service
               port:
                 number: 8080

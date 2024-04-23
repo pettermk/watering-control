@@ -4,4 +4,3 @@ namespace: watering-control
 resources:
   - deployment.yaml
   - ingress.yaml
-  - cert-manager.yaml
