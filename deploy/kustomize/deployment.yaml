@@ -17,9 +17,6 @@ spec:
       initContainers:
       - name: init-myservice
         image: ghcr.io/pettermk/watering-control:0.1.15
-        envFrom:
-        - secretRef:
-            name: postgres-settings
         command: ['sh', '-c', "python manage.py migrate"]
         env:
         - name: POSTGRES_HOST
@@ -68,8 +65,6 @@ spec:
         envFrom:
         - secretRef:
             name: django-secrets
-      imagePullSecrets:
-      - name: regcred
 ---
 apiVersion: v1
 kind: Service
