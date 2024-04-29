@@ -21,6 +21,22 @@ spec:
         - secretRef:
             name: postgres-settings
         command: ['sh', '-c', "python manage.py migrate"]
+        env:
+        - name: POSTGRES_HOST
+          valueFrom:
+            secretKeyRef:
+              name: watering-control-db-app
+              key: host
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: watering-control-db-app
+              key: password
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: watering-control-db-app
+              key: user
       containers:
       - name: watering-control
         image: ghcr.io/pettermk/watering-control:0.1.15
@@ -34,9 +50,22 @@ spec:
             secretKeyRef:
               name: oidc-rsa-key
               key: oidc.key
+        - name: POSTGRES_HOST
+          valueFrom:
+            secretKeyRef:
+              name: watering-control-db-app
+              key: host
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: watering-control-db-app
+              key: password
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: watering-control-db-app
+              key: user
         envFrom:
-        - secretRef:
-            name: postgres-settings
         - secretRef:
             name: django-secrets
       imagePullSecrets:

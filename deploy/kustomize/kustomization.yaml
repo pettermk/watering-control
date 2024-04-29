@@ -4,4 +4,5 @@ namespace: watering-control
 resources:
   - deployment.yaml
   - ingress.yaml
+  - issuer.yaml
   - postgres.yaml
