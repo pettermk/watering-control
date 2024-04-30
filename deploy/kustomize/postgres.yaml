@@ -8,5 +8,7 @@ spec:
     initdb:
       database: watering-control
       owner: watering-control
+      postInitApplicationSQL:
+        - 'GRANT ALL ON SCHEMA public TO "watering-control";'
   storage:
     size: 3Gi
