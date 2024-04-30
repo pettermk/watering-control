@@ -24,6 +24,11 @@ spec:
             secretKeyRef:
               name: watering-control-db-app
               key: host
+        - name: POSTGRES_NAME
+          valueFrom:
+            secretKeyRef:
+              name: watering-control-db-app
+              key: dbname
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -52,6 +57,11 @@ spec:
             secretKeyRef:
               name: watering-control-db-app
               key: host
+        - name: POSTGRES_NAME
+          valueFrom:
+            secretKeyRef:
+              name: watering-control-db-app
+              key: dbname
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
