@@ -30,6 +30,9 @@ ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = ['https://*.kvalvaag-tech.com','https://*.127.0.0.1']
 
+if IS_PRODUCTION:
+    SESSION_COOKIE_SAMESITE = 'None'
+    SESSION_COOKIE_SECURE = True
 
 # Application definition
 
@@ -64,10 +67,12 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'https://pettermk.github.io',
+    "https://exerciselog.kvalvaag-tech.com",
 )
 CORS_ORIGIN_REGEX_WHITELIST = (
     'http://localhost:3000',
     'https://pettermk.github.io',
+    "https://exerciselog.kvalvaag-tech.com",
 )
 
 CSP_DEFAULT_SRC = [
