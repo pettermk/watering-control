@@ -16,7 +16,7 @@ spec:
     spec:
       initContainers:
       - name: init-myservice
-        image: ghcr.io/pettermk/watering-control:0.1.19
+        image: ghcr.io/pettermk/watering-control:0.1.20
         command: ['sh', '-c', "python manage.py migrate"]
         env:
         - name: POSTGRES_HOST
@@ -41,7 +41,7 @@ spec:
               key: user
       containers:
       - name: watering-control
-        image: ghcr.io/pettermk/watering-control:0.1.19
+        image: ghcr.io/pettermk/watering-control:0.1.20
         ports:
         - containerPort: 8000
         env:
