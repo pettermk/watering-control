@@ -72,7 +72,13 @@ CORS_ORIGIN_REGEX_WHITELIST = (
 
 X_FRAME_OPTIONS = "SAMEORIGIN"
 
-CSP_DEFAULT_SRC = ["'self'", "https://maxcdn.bootstrapcdn.com", "https://code.jquery.com", ]
+CSP_DEFAULT_SRC = [
+    "'self'",
+    "https://maxcdn.bootstrapcdn.com",
+    "https://netdna.bootstrapcdn.com",
+    "https://code.jquery.com",
+]
+
 CSP_FRAME_ANCESTORS = [
     "'self'",
     "http://localhost:5191",
