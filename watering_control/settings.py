@@ -190,21 +190,23 @@ LOGGING = {
     'handlers': {
         'console': {
             'level': 'DEBUG',
-            'class': 'logging.StreamHandliner',
+            'class': 'logging.StreamHandler',
             'formatter': 'verbose',
         },
     },
-    'oauth2_provider': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-    }
-    'django': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
-    },
-    'rest_framework': {
-        'handlers': ['console'],
-        'level': 'DEBUG',
+    'loggers': {
+        'oauth2_provider': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+            'django': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
+        'rest_framework': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+        },
     },
 }
 
