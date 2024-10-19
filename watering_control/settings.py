@@ -174,6 +174,40 @@ JWT_AUTH = {
     'JWT_RESPONSE_PAYLOAD_HANDLER': 'web.utils.my_jwt_response_handler'
 }
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,  # Keep default Django loggers active
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandliner',
+            'formatter': 'verbose',
+        },
+    },
+    'oauth2_provider': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    }
+    'django': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+    'rest_framework': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
